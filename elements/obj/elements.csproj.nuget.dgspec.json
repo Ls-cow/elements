@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\elements\\elements\\elements.csproj": {}
+    "C:\\Users\\djunca\\Documents\\GitHub\\elements\\elements\\elements.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\elements\\elements\\elements.csproj": {
+    "C:\\Users\\djunca\\Documents\\GitHub\\elements\\elements\\elements.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\elements\\elements\\elements.csproj",
+        "projectUniqueName": "C:\\Users\\djunca\\Documents\\GitHub\\elements\\elements\\elements.csproj",
         "projectName": "elements",
-        "projectPath": "C:\\Users\\PC\\Desktop\\elements\\elements\\elements.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\elements\\elements\\obj\\",
+        "projectPath": "C:\\Users\\djunca\\Documents\\GitHub\\elements\\elements\\elements.csproj",
+        "packagesPath": "C:\\Users\\djunca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\djunca\\Documents\\GitHub\\elements\\elements\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\djunca\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
