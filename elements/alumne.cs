@@ -25,9 +25,14 @@ namespace elements
             get { return cognom; }
             set { cognom = value; }
         }
-        public string DataNaixament
+        public DateTime DataNaixament
         {
            
+        }
+        public string DataNaix
+        {
+            get { return dataNaixament.ToString(); }
+            set { DateTime.TryParse(value, out dataNaixament); }
         }
         public string Email 
         {
