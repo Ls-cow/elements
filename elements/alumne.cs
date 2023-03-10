@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace elements
 {
-    internal class alumne
+    internal class Alumne
     {
         private string cognom;
         private DateTime dataNaixament;
@@ -62,9 +62,21 @@ namespace elements
             set { telefon = value; }
         }
         #endregion
-        private bool DataValid(DateTime data)
+        public bool DataValid(DateTime data)
         {
-
+            DateTime limit = new DateTime(1900, 01, 01);
+            bool valid = false;
+            do
+            {
+                if (data > DateTime.Now || data < limit)
+                {
+                    Console.WriteLine("Data incorrecte, torna a introduirla: ");
+                    data = DateTime.Parse(Console.ReadLine());
+                }
+                else
+                    valid = true;
+            } while (!valid);
+            return valid;
         }
         public int Edat()
         {
