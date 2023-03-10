@@ -18,8 +18,9 @@ namespace elements
         private string nom;
         private int numAlumne;
         private char sexe;
-        private string telefon;
+        private int telefon;
 
+        #region//Propietats
         public string Cognom
         {
             get { return cognom; }
@@ -27,16 +28,17 @@ namespace elements
         }
         public DateTime DataNaixament
         {
-           
+            get { return dataNaixament; }
+            set { dataNaixament = value; }
         }
         public string DataNaix
         {
             get { return dataNaixament.ToString(); }
             set { DateTime.TryParse(value, out dataNaixament); }
         }
-        public string Email 
+        public string Email
         {
-            get { return  email; }
+            get { return email; }
             set { email = value; }
         }
         public string Nif
@@ -47,7 +49,7 @@ namespace elements
         public string Nom
         {
             get { return nom; }
-            set { nom = value;}
+            set { nom = value; }
         }
         public char Sexe
         {
@@ -59,15 +61,24 @@ namespace elements
             get { return telefon; }
             set { telefon = value; }
         }
-        private bool DataValid (DateTime data)
+        #endregion
+        private bool DataValid(DateTime data)
         {
 
         }
-        public int Edat (string data)
+        public int Edat()
         {
-
+            int edat = DateTime.Now.Year - dataNaixament.Year;
+            if (DateTime.Now.Month < dataNaixament.Month)
+                edat--;
+            else
+            {
+                if (DateTime.Now.Day < dataNaixament.Day)
+                    edat--;
+            }
+            return edat;
         }
-        private string EmailValid (string correo)
+        private string EmailValid(string correo)
         {
             string patron = "[^@]+@[^\\.]+\\..+";
             Regex regex = new Regex(patron);
@@ -79,11 +90,13 @@ namespace elements
             while (!regex.IsMatch(email));
             return correo.ToLower();
         }
-        public string Mostra  (string objecte)
+        public string Mostra(string objecte)
         {
-
+            Console.WriteLine($"DADES ALUMNE {nom}");
+            Console.WriteLine("---------------------");
+            Console.WriteLine($"Cognom: {cognom}");
         }
-        private string NifValid (string document)
+        private string NifValid(string document)
         {
             string dniLetra, dniNumeros;
             string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
@@ -99,15 +112,15 @@ namespace elements
             document = dniNumeros + control[mod];
             return document;
         }
-        private string NomValid (string nom)
+        private string NomValid(string nom)
         {
 
         }
-        public void NumAlumne (int numero)
+        public void NumAlumne(int numero)
         {
 
         }
-        private string TelfValid (string tlf)
+        private string TelfValid(string tlf)
         {
             int i = 0, numeroInt;
             while (tlf.Length != 9)
@@ -124,5 +137,5 @@ namespace elements
             }
             return tlf;
         }
-        public
+    }
 }
