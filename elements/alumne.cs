@@ -90,11 +90,15 @@ namespace elements
             while (!regex.IsMatch(email));
             return correo.ToLower();
         }
-        public string Mostra(string objecte)
+        public void Mostra()
         {
             Console.WriteLine($"DADES ALUMNE {nom}");
             Console.WriteLine("---------------------");
             Console.WriteLine($"Cognom: {cognom}");
+            Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
+            Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
+            Console.WriteLine($"Edat: {this.Edat()}");
+            Console.WriteLine($"Sexe: {sexe}");
         }
         private string NifValid(string document)
         {
