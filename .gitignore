@@ -1,1 +1,10 @@
 elements\obj\Debug\net6.0\elements.GeneratedMSBuildEditorConfig.editorconfig
+
+*.cache
+*.suo
+*.log
+
+
+bin/
+obj/
+TestResults/
