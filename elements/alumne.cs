@@ -114,35 +114,8 @@ namespace elements
                 while (!regex.IsMatch(email));
                 return correo.ToLower();
             }
-            while (!regex.IsMatch(email));
-            return correo.ToLower();
-        }
-        public void Mostra()
-        {
-            Console.WriteLine($"DADES ALUMNE {nom}");
-            Console.WriteLine("---------------------");
-            Console.WriteLine($"Cognom: {cognom}");
-            Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
-            Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
-            Console.WriteLine($"Edat: {this.Edat()}");
-            Console.WriteLine($"Sexe: {sexe}");
-        }
-        public string ToString()
-        {
-            string dades = $"DADES ALUMNE {nom}";
-            dades += "---------------------";
-            dades += $"Cognom: {cognom}";
-            dades += $"NIF: {nif}\tNum Alumne: {numAlumne}";
-            dades += $"Telf: {telefon}\tE-mail: {email}";
-            dades += $"Edat: {this.Edat()}";
-            dades += $"Sexe: {sexe}";
-            return dades;
-        }
-        private string NifValid(string document)
-        {
-            string dniLetra, dniNumeros;
-            string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
-            while (document.Length != 9)
+        
+            public void Mostra()
             {
                 Console.WriteLine($"DADES ALUMNE {nom}");
                 Console.WriteLine("---------------------");
@@ -152,88 +125,88 @@ namespace elements
                 Console.WriteLine($"Edat: {this.Edat()}");
                 Console.WriteLine($"Sexe: {sexe}");
             }
-            private string NifValid(string document)
-            {
-                string dniLetra, dniNumeros;
-                string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
-                while (document.Length != 9)
+            
+                private string NifValid(string document)
                 {
-                    Console.WriteLine("Dni mal escrito, ingrese nuevamente.");
-                    document = Console.ReadLine();
+                    string dniLetra, dniNumeros;
+                    string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
+                    while (document.Length != 9)
+                    {
+                        Console.WriteLine("Dni mal escrito, ingrese nuevamente.");
+                        document = Console.ReadLine();
+                    }
+                    dniNumeros = document.Substring(0, document.Length - 1);
+                    dniLetra = document.Substring(document.Length - 1, 1);
+                    int numeros = Int32.Parse(dniNumeros);
+                    var mod = numeros % 23;
+                    document = dniNumeros + control[mod];
+                    return document;
                 }
-                dniNumeros = document.Substring(0, document.Length - 1);
-                dniLetra = document.Substring(document.Length - 1, 1);
-                int numeros = Int32.Parse(dniNumeros);
-                var mod = numeros % 23;
-                document = dniNumeros + control[mod];
-                return document;
-            }
-            private string NomValid(string nom)
-            {
-                Regex validar = new Regex("[a-zA-Z]");
-                if (!validar.IsMatch(nom))
+                private string NomValid(string nom)
                 {
-                    Console.WriteLine("El només pot contenir lletres, torna a escriure");
-                    nom = Console.ReadLine();
+                    Regex validar = new Regex("[a-zA-Z]");
+                    if (!validar.IsMatch(nom))
+                    {
+                        Console.WriteLine("El només pot contenir lletres, torna a escriure");
+                        nom = Console.ReadLine();
+                    }
+                    return nom;
                 }
-                return nom;
-
-        }
-        public void NumAlumne()
-        {
-
-            }
-            private string TelfValid(string tlf)
+            public void NumAlumne()
             {
-                int i = 0, numeroInt;
-                while (tlf.Length != 9)
-                {
-                    Console.WriteLine("Numero mal escrito, ingrese de nuevo.");
-                    tlf = Console.ReadLine();
-                }
-                bool esNumero = int.TryParse(tlf, out numeroInt);
-                while (esNumero == false)
-                {
-                    Console.WriteLine("El numero no puede contener letras, ingrese de nuevo.");
-                    tlf = Console.ReadLine();
-                    esNumero = int.TryParse(tlf, out numeroInt);
-                }
-                return tlf;
             }
-            public string Tostrinng()
-            {
-                return $"Nom: {nom} \rCognom: {cognom}\rNum alumne: {numAlumne} \rData de naixament: {dataNaixament}\rNIF:{nif}\rEmail: {email}\r" +
-                    $"Telefon: {telefon}\r Sexe:{sexe}";
-            }
+                private string TelfValid(string tlf)
+                {
+                    int i = 0, numeroInt;
+                    while (tlf.Length != 9)
+                    {
+                        Console.WriteLine("Numero mal escrito, ingrese de nuevo.");
+                        tlf = Console.ReadLine();
+                    }
+                    bool esNumero = int.TryParse(tlf, out numeroInt);
+                    while (esNumero == false)
+                    {
+                        Console.WriteLine("El numero no puede contener letras, ingrese de nuevo.");
+                        tlf = Console.ReadLine();
+                        esNumero = int.TryParse(tlf, out numeroInt);
+                    }
+                    return tlf;
+                }
+                public string ToString()
+                {
+                    return $"Nom: {nom} \rCognom: {cognom}\rNum alumne: {numAlumne} \rData de naixament: {dataNaixament}\rNIF:{nif}\rEmail: {email}\r" +
+                        $"Telefon: {telefon}\r Sexe:{sexe}";
+                }
            
-        }
-        public override bool Equals(object obj)
-        {
-            if(obj == null || GetType() != obj.GetType()) return false;
-            else
+            
+            public override bool Equals(object obj)
             {
-                if (obj.ToString().Contains(this.Nif)) return true;
+                if(obj == null || GetType() != obj.GetType()) return false;
+                else
+                {
+                    if (obj.ToString().Contains(this.Nif)) return true;
+                    else return false;
+                }
+            }
+            public static bool operator ==(Alumne a1, Alumne a2)
+            {
+                if (
+                    a1.Nom == a2.Nom &&
+                    a1.Cognom == a2.Cognom &&
+                    a1.NumAlumne == a2.NumAlumne &&
+                    a1.Nif == a2.Nif &&
+                    a1.DataNaixament == a2.DataNaixament &&
+                    a1.Email == a2.Email &&
+                    a1.Telefon == a2.Telefon &&
+                    a1.Sexe == a2.Sexe
+                    ) return true;
                 else return false;
             }
-        }
-        public static bool operator ==(Alumne a1, Alumne a2)
-        {
-            if (
-                a1.Nom == a2.Nom &&
-                a1.Cognom == a2.Cognom &&
-                a1.NumAlumne == a2.NumAlumne &&
-                a1.Nif == a2.Nif &&
-                a1.DataNaixament == a2.DataNaixament &&
-                a1.Email == a2.Email &&
-                a1.Telefon == a2.Telefon &&
-                a1.Sexe == a2.Sexe
-                ) return true;
-            else return false;
-        }
-        public static bool operator !=(Alumne a1, Alumne a2)
-        {
-            if (a1 == a2) return false;
-            else return true;
+            public static bool operator !=(Alumne a1, Alumne a2)
+            {
+                if (a1 == a2) return false;
+                else return true;
+            }
         }
     }
 }
