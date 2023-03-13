@@ -29,7 +29,7 @@ namespace elements
             nom = string.Empty;
             cognom = string.Empty;
             nif = string.Empty;
-            numAlumne = 0;
+            numAlumne = NumAlumnes();
             dataNaixament = DateTime.Now;
             email = string.Empty;
             telefon = 0;
@@ -78,6 +78,11 @@ namespace elements
         {
             get { return telefon; }
             set { telefon = value; }
+        }
+        public int NumAlumne
+        {
+            get { return numAlumne; }
+            set { numAlumne = NumAlumnes(); }
         }
         //METODES
         #endregion
@@ -157,8 +162,9 @@ namespace elements
             }
             return nom;
         }
-        public int NumAlumne()
+        public int NumAlumnes()
         {
+            return numAlumne++;
         }
         private string TelfValid(string tlf)
         {
