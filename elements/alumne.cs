@@ -146,6 +146,7 @@ namespace elements
                 }
             public int NumAlumne()
             {
+            return numAlumne++;
             }
                 private string TelfValid(string tlf)
                 {
