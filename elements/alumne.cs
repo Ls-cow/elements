@@ -114,19 +114,33 @@ namespace elements
                 while (!regex.IsMatch(email));
                 return correo.ToLower();
             }
-        
-            public void Mostra()
+        }
+        public void Mostra()
+        {
+            Console.WriteLine($"DADES ALUMNE {nom}");
+            Console.WriteLine("---------------------");
+            Console.WriteLine($"Cognom: {cognom}");
+            Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
+            Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
+            Console.WriteLine($"Edat: {this.Edat()}");
+            Console.WriteLine($"Sexe: {sexe}");
+        }
+        public string ToString()
+        {
+            string dades = $"DADES ALUMNE {nom}";
+            dades += "---------------------";
+            dades += $"Cognom: {cognom}";
+            dades += $"NIF: {nif}\tNum Alumne: {numAlumne}";
+            dades += $"Telf: {telefon}\tE-mail: {email}";
+            dades += $"Edat: {this.Edat()}";
+            dades += $"Sexe: {sexe}";
+            return dades;
+        }
+            private string NifValid(string document)
             {
-                Console.WriteLine($"DADES ALUMNE {nom}");
-                Console.WriteLine("---------------------");
-                Console.WriteLine($"Cognom: {cognom}");
-                Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
-                Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
-                Console.WriteLine($"Edat: {this.Edat()}");
-                Console.WriteLine($"Sexe: {sexe}");
-            }
-            
-                private string NifValid(string document)
+                string dniLetra, dniNumeros;
+                string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
+                while (document.Length != 9)
                 {
                     string dniLetra, dniNumeros;
                     string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
