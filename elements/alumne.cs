@@ -36,9 +36,6 @@ namespace elements
             }
             public DateTime DataNaixament
             {
-                get { return dataNaixament.ToString; }
-                set { DateTime.TryParse(value, dataNaixament); }
-
                 get { return dataNaixament; }
                 set { dataNaixament = value; }
             }
