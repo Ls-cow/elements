@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -112,6 +113,17 @@ namespace elements
             Console.WriteLine($"Edat: {this.Edat()}");
             Console.WriteLine($"Sexe: {sexe}");
         }
+        public string ToString()
+        {
+            string dades = $"DADES ALUMNE {nom}";
+            dades += "---------------------";
+            dades += $"Cognom: {cognom}";
+            dades += $"NIF: {nif}\tNum Alumne: {numAlumne}";
+            dades += $"Telf: {telefon}\tE-mail: {email}";
+            dades += $"Edat: {this.Edat()}";
+            dades += $"Sexe: {sexe}";
+            return dades;
+        }
         private string NifValid(string document)
         {
             string dniLetra, dniNumeros;
@@ -132,7 +144,7 @@ namespace elements
         {
 
         }
-        public void NumAlumne(int numero)
+        public void NumAlumne()
         {
 
         }
@@ -152,6 +164,34 @@ namespace elements
                 esNumero = int.TryParse(tlf, out numeroInt);
             }
             return tlf;
+        }
+        public override bool Equals(object obj)
+        {
+            if(obj == null || GetType() != obj.GetType()) return false;
+            else
+            {
+                if (obj.ToString().Contains(this.Nif)) return true;
+                else return false;
+            }
+        }
+        public static bool operator ==(Alumne a1, Alumne a2)
+        {
+            if (
+                a1.Nom == a2.Nom &&
+                a1.Cognom == a2.Cognom &&
+                a1.NumAlumne == a2.NumAlumne &&
+                a1.Nif == a2.Nif &&
+                a1.DataNaixament == a2.DataNaixament &&
+                a1.Email == a2.Email &&
+                a1.Telefon == a2.Telefon &&
+                a1.Sexe == a2.Sexe
+                ) return true;
+            else return false;
+        }
+        public static bool operator !=(Alumne a1, Alumne a2)
+        {
+            if (a1 == a2) return false;
+            else return true;
         }
     }
 }
