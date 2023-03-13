@@ -9,8 +9,13 @@ using System.Threading.Tasks;
 
 namespace elements
 {
+<<<<<<< HEAD
     internal class alumne
     { //ATRIBUTS
+=======
+    internal class Alumne
+    {
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
         private string cognom;
         private DateTime dataNaixament;
         private string email;
@@ -18,9 +23,13 @@ namespace elements
         private string nom;
         private int numAlumne;
         private char sexe;
-        private string telefon;
+        private int telefon;
 
+<<<<<<< HEAD
         //PROPIETATS
+=======
+        #region//Propietats
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
         public string Cognom
         {
             get { return cognom; }
@@ -28,17 +37,22 @@ namespace elements
         }
         public DateTime DataNaixament
         {
+<<<<<<< HEAD
             get { return dataNaixament.ToString; }
             set { DateTime.TryParse(value, dataNaixament); }
+=======
+            get { return dataNaixament; }
+            set { dataNaixament = value; }
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
         }
         public string DataNaix
         {
             get { return dataNaixament.ToString(); }
             set { DateTime.TryParse(value, out dataNaixament); }
         }
-        public string Email 
+        public string Email
         {
-            get { return  email; }
+            get { return email; }
             set { email = value; }
         }
         public string Nif
@@ -49,7 +63,7 @@ namespace elements
         public string Nom
         {
             get { return nom; }
-            set { nom = value;}
+            set { nom = value; }
         }
         public char Sexe
         {
@@ -61,16 +75,41 @@ namespace elements
             get { return telefon; }
             set { telefon = value; }
         }
+<<<<<<< HEAD
         //METODES
         private bool DataValid (DateTime data)
+=======
+        #endregion
+        public bool DataValid(DateTime data)
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
         {
-
+            DateTime limit = new DateTime(1900, 01, 01);
+            bool valid = false;
+            do
+            {
+                if (data > DateTime.Now || data < limit)
+                {
+                    Console.WriteLine("Data incorrecte, torna a introduirla: ");
+                    data = DateTime.Parse(Console.ReadLine());
+                }
+                else
+                    valid = true;
+            } while (!valid);
+            return valid;
         }
-        public int Edat (string data)
+        public int Edat()
         {
-
+            int edat = DateTime.Now.Year - dataNaixament.Year;
+            if (DateTime.Now.Month < dataNaixament.Month)
+                edat--;
+            else
+            {
+                if (DateTime.Now.Day < dataNaixament.Day)
+                    edat--;
+            }
+            return edat;
         }
-        private string EmailValid (string correo)
+        private string EmailValid(string correo)
         {
             string patron = "[^@]+@[^\\.]+\\..+";
             Regex regex = new Regex(patron);
@@ -82,11 +121,17 @@ namespace elements
             while (!regex.IsMatch(email));
             return correo.ToLower();
         }
-        public string Mostra  (string objecte)
+        public void Mostra()
         {
-
+            Console.WriteLine($"DADES ALUMNE {nom}");
+            Console.WriteLine("---------------------");
+            Console.WriteLine($"Cognom: {cognom}");
+            Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
+            Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
+            Console.WriteLine($"Edat: {this.Edat()}");
+            Console.WriteLine($"Sexe: {sexe}");
         }
-        private string NifValid (string document)
+        private string NifValid(string document)
         {
             string dniLetra, dniNumeros;
             string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
@@ -102,7 +147,7 @@ namespace elements
             document = dniNumeros + control[mod];
             return document;
         }
-        private string NomValid (string nom)
+        private string NomValid(string nom)
         {
             Regex validar = new Regex("[a-zA-Z]");
             if(!validar.IsMatch(nom))
@@ -113,11 +158,15 @@ namespace elements
             return nom;
 
         }
+<<<<<<< HEAD
         public int NumAlumne(string[] alumne )
+=======
+        public void NumAlumne(int numero)
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
         {
             return alumne.Length + 1;
         }
-        private string TelfValid (string tlf)
+        private string TelfValid(string tlf)
         {
             int i = 0, numeroInt;
             while (tlf.Length != 9)
@@ -134,9 +183,13 @@ namespace elements
             }
             return tlf;
         }
+<<<<<<< HEAD
         public string Tostrinng() 
         {
             return $"Nom: {nom} \rCognom: {cognom}\rNum alumne: {numAlumne} \rData de naixament: {dataNaixament}\rNIF:{nif}\rEmail: {email}\r" +
                 $"Telefon: {telefon}\r Sexe:{sexe}";
         }
+=======
+    }
+>>>>>>> 77ef636390b2283cf5588be1a83b14a41e0b7398
 }
