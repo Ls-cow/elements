@@ -11,11 +11,9 @@ using System.Threading.Tasks;
 
 namespace elements
 {
-    internal class alumne
-    { //ATRIBUTS
-
         internal class Alumne
         {
+            //ATRIBUTS
             private string cognom;
             private DateTime dataNaixament;
             private string email;
@@ -24,7 +22,6 @@ namespace elements
             private int numAlumne;
             private char sexe;
             private int telefon;
-
 
             //PROPIETATS
 
@@ -111,16 +108,16 @@ namespace elements
                 while (!regex.IsMatch(email));
                 return correo.ToLower();
             }
-        public void Mostra()
-        {
-            Console.WriteLine($"DADES ALUMNE {nom}");
-            Console.WriteLine("---------------------");
-            Console.WriteLine($"Cognom: {cognom}");
-            Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
-            Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
-            Console.WriteLine($"Edat: {this.Edat()}");
-            Console.WriteLine($"Sexe: {sexe}");
-        }
+            public void Mostra()
+            {
+                Console.WriteLine($"DADES ALUMNE {nom}");
+                Console.WriteLine("---------------------");
+                Console.WriteLine($"Cognom: {cognom}");
+                Console.WriteLine($"NIF: {nif}\tNum Alumne: {numAlumne}");
+                Console.WriteLine($"Telf: {telefon}\tE-mail: {email}");
+                Console.WriteLine($"Edat: {this.Edat()}");
+                Console.WriteLine($"Sexe: {sexe}");
+            }
             private string NifValid(string document)
             {
                 string dniLetra, dniNumeros;
@@ -203,5 +200,4 @@ namespace elements
                 else return true;
             }
         }
-    }
 }
