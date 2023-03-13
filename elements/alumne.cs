@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace elements
 {
     internal class alumne
-    {
+    { //ATRIBUTS
         private string cognom;
         private DateTime dataNaixament;
         private string email;
@@ -20,6 +20,7 @@ namespace elements
         private char sexe;
         private string telefon;
 
+        //PROPIETATS
         public string Cognom
         {
             get { return cognom; }
@@ -27,7 +28,8 @@ namespace elements
         }
         public DateTime DataNaixament
         {
-           
+            get { return dataNaixament.ToString; }
+            set { DateTime.TryParse(value, dataNaixament); }
         }
         public string DataNaix
         {
@@ -59,6 +61,7 @@ namespace elements
             get { return telefon; }
             set { telefon = value; }
         }
+        //METODES
         private bool DataValid (DateTime data)
         {
 
@@ -101,11 +104,18 @@ namespace elements
         }
         private string NomValid (string nom)
         {
+            Regex validar = new Regex("[a-zA-Z]");
+            if(!validar.IsMatch(nom))
+            {
+                Console.WriteLine("El només pot contenir lletres, torna a escriure");
+                nom = Console.ReadLine();
+            }
+            return nom;
 
         }
-        public void NumAlumne (int numero)
+        public int NumAlumne(string[] alumne )
         {
-
+            return alumne.Length + 1;
         }
         private string TelfValid (string tlf)
         {
@@ -124,5 +134,9 @@ namespace elements
             }
             return tlf;
         }
-        public
+        public string Tostrinng() 
+        {
+            return $"Nom: {nom} \rCognom: {cognom}\rNum alumne: {numAlumne} \rData de naixament: {dataNaixament}\rNIF:{nif}\rEmail: {email}\r" +
+                $"Telefon: {telefon}\r Sexe:{sexe}";
+        }
 }
