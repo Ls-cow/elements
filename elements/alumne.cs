@@ -33,7 +33,30 @@ namespace elements
             dataNaixament = DateTime.Now;
             email = string.Empty;
             telefon = 0;
-            sexe = ' ';
+            sexe = 'D';
+        }
+        public Alumne(string nom, string cognom, string nif) : this()
+        {
+            this.nom = NomValid(nom);
+            this.cognom = NomValid(cognom);
+            this.nif = NifValid(nif);
+        }
+        public Alumne(string nom, string cognom, string nif, string dataNaixament, string email, int telefon, char sexe) : this(nom, cognom, nif)
+        {
+            this.dataNaixament = DateTime.Parse(dataNaixament);
+            this.email = EmailValid(email);
+            this.telefon = TelfValid(Convert.ToString(telefon));
+            this.sexe = sexe;
+        }
+        public Alumne(Alumne a) : this ()
+        {
+            this.nom = a.nom;
+            this.cognom = a.cognom;
+            this.nif = a.nif;
+            this.dataNaixament = a.dataNaixament;
+            this.email = a.email;
+            this.telefon = a.telefon;
+            this.sexe = a.sexe;
         }
 
         //PROPIETATS
@@ -42,7 +65,7 @@ namespace elements
         public string Cognom
         {
             get { return cognom; }
-            set { cognom = value; }
+            set { cognom = NomValid(value); }
         }
         public DateTime DataNaixament
         {
@@ -57,17 +80,17 @@ namespace elements
         public string Email
         {
             get { return email; }
-            set { email = value; }
+            set { email = EmailValid(value); }
         }
         public string Nif
         {
             get { return nif; }
-            set { nif = value; }
+            set { nif = NifValid(value); }
         }
         public string Nom
         {
             get { return nom; }
-            set { nom = value; }
+            set { nom = NomValid(value); }
         }
         public char Sexe
         {
@@ -77,7 +100,7 @@ namespace elements
         public int Telefon
         {
             get { return telefon; }
-            set { telefon = value; }
+            set { telefon = TelfValid(Convert.ToString(value)); }
         }
         public int NumAlumne
         {
@@ -166,17 +189,13 @@ namespace elements
         {
             return numAlumne++;
         }
-        private string TelfValid(string tlf)
+        private int TelfValid(string tlf)
         {
             int i = 0, numeroInt;
             while (tlf.Length != 9)
             {
-<<<<<<< HEAD
-            return numAlumne++;
-=======
                 Console.WriteLine("Numero mal escrito, ingrese de nuevo.");
                 tlf = Console.ReadLine();
->>>>>>> 49504b6725b8c8a61a0148d020d8c7176a1bfd87
             }
             bool esNumero = int.TryParse(tlf, out numeroInt);
             while (esNumero == false)
@@ -185,7 +204,7 @@ namespace elements
                 tlf = Console.ReadLine();
                 esNumero = int.TryParse(tlf, out numeroInt);
             }
-            return tlf;
+            return int.Parse(tlf);
         }
         public string ToString()
         {
