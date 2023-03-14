@@ -98,6 +98,32 @@ namespace elements
                 index = Seleccio(index, 6);
                 switch (index)
                 {
+                    case 0:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    case 13://sortir
+                        break;
 
                 }
             } while (index != 13);
@@ -122,9 +148,12 @@ namespace elements
         public static void MenuPrincipal()
         {
             Recuadre(7);
-            Pinta(4, 4, "Mostrar Racional");
-            Pinta(4, 5, "Operacions amb Mètodes");
-            Pinta(4, 6, "Operacions amb operands");
+            Pinta(4, 4, "Crear Modul");
+            Pinta(4, 5, "Mostrar Modul");
+            Pinta(4, 6, "Afegir alumne a Modul");
+            Pinta(4, 7, "Consultar alumne a Modul");
+            Pinta(4, 7, "Eliminar alumne a Modul");
+            Pinta(4, 7, "Llistar alumnes de Modul");
         }
         public static int Seleccio(int select, int max)
         {
