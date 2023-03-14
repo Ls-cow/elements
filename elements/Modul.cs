@@ -29,6 +29,7 @@ namespace elements
             {
                 this.alumnes[i] = m.alumnes[i];
             }
+            ultimElement = m.ultimElement;
         }
         //Propietats
         public int NumAlumnes
@@ -68,6 +69,19 @@ namespace elements
                 }
             }
             return -1;
+        }
+        public Alumne Indexador(string alumne)
+        {
+            //busca la posició de l'alumne
+            int posicio = Index(alumne);
+            //retorna l'alumne o null si no existeix
+            if (posicio == -1) return null;
+            else return alumnes[posicio];
+        }
+        public void Afegir(Alumne a)
+        {
+            alumnes[ultimElement] = a;
+            ultimElement++;
         }
     }
 }
