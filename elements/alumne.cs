@@ -137,17 +137,17 @@ namespace elements
             }
             return edat;
         }
-        private string EmailValid(string correo)
+        private string EmailValid(string email)
         {
             string patron = "[^@]+@[^\\.]+\\..+";
             Regex regex = new Regex(patron);
-            do
+            
+            while (!regex.IsMatch(email))
             {
                 Console.WriteLine("Error,escribe nuevamente");
-                correo = Console.ReadLine();
+                email = Console.ReadLine();
             }
-            while (!regex.IsMatch(email));
-            return correo.ToLower();
+            return email.ToLower();
         }
         public void Mostra()
         {
@@ -241,5 +241,7 @@ namespace elements
             if (a1 == a2) return false;
             else return true;
         }
+
+        
     }
 }
