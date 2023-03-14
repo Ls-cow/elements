@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -64,7 +65,7 @@ namespace elements
                 //busca l'input a la taula alumnes
                 for (int i = 0; i < NumAlumnes; i++)
                 {
-                    if (alumnes[i].Nom == input)
+                    if (alumnes[i].Nom == input.Substring(0, input.IndexOf(" ")) && alumnes[i].Cognom == input.Substring(input.IndexOf(" ")))
                         return i;
                 }
             }
@@ -82,6 +83,37 @@ namespace elements
         {
             alumnes[ultimElement] = a;
             ultimElement++;
+        }
+        public void Modificar(Alumne a)
+        {
+            //Extreu el nom complet de l'alumne
+            string nomComplet = a.Nom + " " + a.Cognom;
+            //localitza a l'alumne
+            int posicio = Index(nomComplet);
+            //modifica l'alumne trobat o no fa res si no existeix
+            if (posicio == -1) return;
+            else
+            {
+                alumnes[posicio].Nif = a.Nif;
+                alumnes[posicio].DataNaixament = a.DataNaixament;
+                alumnes[posicio].Email = a.Email;
+                alumnes[posicio].Telefon = a.Telefon;
+                alumnes[posicio].Sexe = a.Sexe;
+            }
+        }
+        public void Eliminar(string nomComplet)
+        {
+            //troba la posicio de l'alumne
+            int posicio = Index(nomComplet);
+            //si el troba elimina l'alumne
+            if (posicio == -1) { }
+            else
+            {
+                alumnes[posicio] = null;
+                //reordena l'array i actualitza numero d'alumnes
+
+                ultimElement--;
+            }
         }
     }
 }
