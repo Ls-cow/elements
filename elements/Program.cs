@@ -84,6 +84,95 @@ namespace elements
                 Console.WriteLine("\r\rEls alumnes son iguals");
             else Console.WriteLine("\r\rNo son iguals");
 
+            Thread.Sleep(5000);
+            Console.Clear();
+
+            //program moduls
+            int index = 0;
+            Console.CursorVisible = false;
+            do
+            {
+                Console.Clear();
+                MenuPrincipal();
+                Pinta(2, 4, ">");
+                index = Seleccio(index, 6);
+                switch (index)
+                {
+
+                }
+            } while (index != 13);
+
         }
+        //MENU
+        public static void Pinta(int x, int y, string l)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.WriteLine(l);
+        }
+        public static void Recuadre(int max)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Pinta(0, 1, "Prem Q per sortir");
+            Console.ForegroundColor = ConsoleColor.White;
+            Pinta(0, 3, "********************************");
+            for (int i = 4; i < max; i++)
+                Pinta(0, i, "*                              *");
+            Pinta(0, max, "********************************");
+        }
+        public static void MenuPrincipal()
+        {
+            Recuadre(7);
+            Pinta(4, 4, "Mostrar Racional");
+            Pinta(4, 5, "Operacions amb Mètodes");
+            Pinta(4, 6, "Operacions amb operands");
+        }
+        public static int Seleccio(int select, int max)
+        {
+            ConsoleKey key = ConsoleKey.Spacebar;
+            int x = 2, y = 4;
+            while (key != ConsoleKey.Enter)
+            {
+                //Sortir del menu al apretar Q
+                if (key == ConsoleKey.Q)
+                {
+                    select = 13;
+                    Console.Clear();
+                    return select;
+                }
+                else
+                {
+                    //Mou selector per teclat
+                    key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.UpArrow)
+                    {
+                        select--;
+                        y--;
+                    }
+                    else if (key == ConsoleKey.DownArrow)
+                    {
+                        select++;
+                        y++;
+                    }
+                    //Si arriba al final del menú
+                    if (select < 0)
+                    {
+                        select = max;
+                        y = max + 4;
+                    }
+                    else if (select > max)
+                    {
+                        select = 0;
+                        y = 4;
+                    }
+                    //Pinta el selector i repinta el menú
+                    Console.Clear();
+                    MenuPrincipal();
+                    Pinta(x, y, ">");
+                }
+            }
+            Console.Clear();
+            return select;
+        }
+
     }
 }
