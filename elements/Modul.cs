@@ -121,5 +121,22 @@ namespace elements
                 ultimElement--;
             }
         }
+
+        public string ToString()
+        {
+            string modul = "";
+            for(int i = 0; i < NumAlumnes; i++)
+                modul += $"{alumnes[i].ToString()}\n";
+            return modul;
+        }
+        public bool Equals(Alumne b)
+        {
+            if (b.Nom == this.Nom && b.ToString().Length == this.ToString().Length)
+            {
+                if (b.ToString().Contains(this.ToString())) return true;
+                else return false;
+            }
+            return false;
+        }
     }
 }
