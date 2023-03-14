@@ -17,7 +17,7 @@ namespace elements
         private string nom;
         private string cognom;
         private string nif;
-        private int numAlumne;
+        private static int numAlumne;
         private DateTime dataNaixament;
         private string email;
         private int telefon;
