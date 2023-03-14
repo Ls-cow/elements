@@ -10,6 +10,7 @@ namespace elements
     {
         static void Main(string[] args)
         {
+            //prova1
             Alumne alumne = new Alumne();
 
             Console.WriteLine("Escriu el nom");
@@ -34,7 +35,8 @@ namespace elements
             alumne.Telefon = Convert.ToInt32(Console.ReadLine());
 
             alumne.Mostra();
-            
+            //prova2
+            //prova3
         }
     }
 }
