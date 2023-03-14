@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -111,7 +112,12 @@ namespace elements
             {
                 alumnes[posicio] = null;
                 //reordena l'array i actualitza numero d'alumnes
-
+                for(int i = posicio; i < alumnes.Length; i++)
+                {
+                    Alumne aux = alumnes[i];
+                    alumnes[i] = alumnes[i + 1];
+                    alumnes[i + 1] = aux;
+                }
                 ultimElement--;
             }
         }
