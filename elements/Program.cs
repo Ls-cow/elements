@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -99,10 +101,16 @@ namespace elements
                 switch (index)
                 {
                     case 0:
+                        Console.Write("Introdueix la mida del mòdul: ");
+                        int mida = Convert.ToInt32(Console.ReadLine());
+                        Modul(mida);
+                        Console.WriteLine("Mòdul creat amb èxit!"); 
                         break;
                     case 2:
+                        Modul.ToString();
                         break;
                     case 3:
+                        
                         break;
                     case 4:
                         break;
